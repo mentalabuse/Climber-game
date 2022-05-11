@@ -1,0 +1,448 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+	font-family: 'Cute Punk'; 
+	src: local('Cute Punk'),
+		url(fonts/cutepunk/Cutepunk_Regular.otf); 
+}
+@font-face {
+	font-family: 'Gilbert-Color'; 
+	src: local('Gilbert-Color'),
+		url(fonts/Gilbert/Gilbert-Color\ Bold\ Preview5.otf); 
+}
+@font-face {
+	font-family: 'Lot'; 
+	src: local('Lot'),
+		url(fonts/LOT/Commercial/OTF/Lot-Regular.otf); 
+}
+
+body {
+  width: 3847px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+.mountBg {
+  position: absolute;
+  width: 3847px;
+  height: 1080px;
+  background: url(img/mountains.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.soundvol {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  background: url(img/volume.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+canvas {
+  position: absolute;
+  left: 0;
+  top: 970px;
+  z-index: -1;
+}
+
+.block {
+  position: relative;
+  background: url(img/block.png);
+  background-size:  contain;
+  height: 10px;
+  background-position: center center;
+}
+
+.point {
+  position: absolute;
+  background: pink;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  visibility: hidden;
+}
+
+.circ {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: url(img/circ.png);
+  background-size: contain;
+}
+
+.block1 {
+  top: 1050px;
+  left: 0;
+  width: 250px;
+  transform: rotate(-16deg);
+}
+
+.block2 {
+  top: 1005px;
+  left: 240px;
+  width: 150px;
+}
+
+.block3 {
+  top: 800px;
+  left: 600px;
+  width: 250px;
+}
+
+.circ1 {
+  top: 720px;
+  left: 600px;
+}
+
+.block4 {
+  top: 600px;
+  left: 1000px;
+  width: 200px;
+}
+
+.circ2 {
+  top: 520px;
+  left: 1000px;
+}
+
+.block5 {
+  top: 380px;
+  left: 1350px;
+  width: 300px;
+}
+
+.circ3 {
+  top: 300px;
+  left: 1350px;
+}
+
+.block6 {
+  top: 220px;
+  left: 1760px;
+  width: 240px;
+}
+
+.block7 {
+  top: 120px;
+  left: 1600px;
+  width: 400px;
+  transform: rotate(30deg);
+}
+
+.circ4 {
+  top: 160px;
+  left: 1750px;
+}
+
+.rope {
+  position: relative;
+  width: 100px;
+  height: 10px;
+  background: url(img/chain.png);
+  background-size: contain;
+  background-position: center center;
+  transform-origin: 0% 50%;
+  z-index: 2;
+}
+
+.ropedetector {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: red;
+  visibility: hidden;
+}
+
+.slideanim {
+  animation: slide 3.5s ease-in-out forwards;
+}
+
+.mirroredropeanim {
+  animation:linear mrotrope 2s infinite alternate;
+  background: url(img/hook.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 50px;
+}
+
+.ropeanim {
+  animation:linear rotrope 2s infinite alternate;
+  background: url(img/hook.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 50px;
+}
+
+.finish {
+  position: absolute;
+  top: 15px;
+  left: 1625px;
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rotFinish {
+  animation: rotfinish 2.5s linear infinite alternate;
+}
+
+.overlay {
+  position: absolute;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-around;
+}
+
+.header {
+  font-family: 'Lot'; 
+  font-size: 200px;
+  color: #fff;
+}
+
+.startbutton {
+  background: whitesmoke;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 60px;
+  border-radius: 20%;
+  font-family: 'Cute Punk';
+}
+
+.auth {
+  display: flex;
+  align-self:flex-end;
+  color: #fff;
+  margin-right: 50px;
+  font-size: 40px;
+  font-family: 'Gilbert-Color';
+}
+
+.arrows {
+  position: absolute;
+  top: 500px;
+  left: 300px;
+  width: 153px;
+  height: 153px;
+  background: url(img/arrows.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.keyx {
+  position: absolute;
+  top: 525px;
+  left: 150px;
+  width: 102px;
+  height: 102px;
+  background: url(img/keyx.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.kborder {
+  position: absolute;
+  top: 489px;
+  left: 125px;
+  width: 350px;
+  height: 172px;
+  border: 5px solid black;
+  border-radius: 30px;
+}
+
+.keyboard {
+  position: absolute;
+  top: 650px;
+  left: 250px;
+  width: 51px;
+  height: 51px;
+  background: url(img/keyboard.png);
+  background-size: cover;
+}
+
+.ropemiss {
+animation: misser 1s forwards;
+}
+
+.foundament {
+  width: 250px;
+  height: 60px;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  background: url(img/found.png);
+  background-repeat: repeat;
+  background-size: contain;
+}
+
+.found3 {
+  width: 250px;
+  height: 200px;
+  background-size: contain;
+}
+
+.found4 {
+  width: 200px;
+  height: 230px;
+  background-size: contain;
+}
+
+.found5 {
+  width: 300px;
+  height: 280px;
+  background-size: contain;
+}
+
+.found6 {
+  width: 240px;
+  height: 540px;
+  background-size: contain;
+  z-index: 1;
+}
+
+.faller {
+  position: absolute;
+  left: 1550px;
+  top: 140px;
+  background: url(img/faller.png);
+  background-repeat: repeat;
+  background-size: contain;
+  width: 113px;
+  height: 150px;
+  z-index: 2;
+}
+
+.fallingStar {
+  animation: starfall 5s linear forwards;
+}
+
+@keyframes starfall {
+  0% {
+    top: 140px;
+  }
+  100% {
+    top: 900px;
+  }
+}
+
+@keyframes misser {
+  0% {
+    width: 100px;
+  }
+  50% {
+    width: 400px;
+  }
+  100% {
+    width: 100px;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: rotate(130deg);
+  }
+  20% {
+    transform: rotate(50deg);
+  }
+  40% {
+    transform: rotate(110deg);
+  }
+  60% {
+    transform: rotate(70deg);
+  }
+  80% {
+    transform: rotate(100deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotrope {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-40deg);
+  }
+  100% {
+    transform: rotate(-80deg);
+  }
+}
+
+@keyframes mrotrope {
+  0% {
+    transform: rotate(-180deg);
+  }
+  50% {
+    transform: rotate(-140deg);
+  }
+  100% {
+    transform: rotate(-100deg);
+  }
+}
+
+@keyframes rotfinish {
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(-30deg);
+  }
+}
+
+@keyframes hideover {
+  0%{
+    visibility: visible;
+    z-index: 1;
+    opacity: 1;
+  } 
+  99% {
+    visibility: visible;
+    z-index: 1;
+    opacity: 0;
+  } 
+  100% {
+    visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+  }
+}
+
+@keyframes showover {
+  0%{
+    visibility: visible;
+    z-index: 1;
+    opacity: 0;
+  } 
+  100% {
+    opacity: 1;
+    z-index: 1;
+    visibility: visible;
+  }
+}
