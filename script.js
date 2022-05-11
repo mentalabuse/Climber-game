@@ -61,7 +61,7 @@ class Character {
     this.frameX = 1
     this.x = 0
     this.y = 0
-    this.speed = 3
+    this.speed = 2.5
   }
   drawDying() {
     if (mirror) {
@@ -348,7 +348,7 @@ function switchblock() {
     charDie()
   }
     if (block == blocks[4] && !onrope) {
-    if (getCoords(canvas).right-canvas.offsetWidth/2 < getCoords(faller).right && getCoords(canvas).right - 40 > getCoords(faller).left && getCoords(canvas).top + 40 < getCoords(faller).bottom) {
+    if (getCoords(canvas).right-canvas.offsetWidth/2 < getCoords(faller).right && getCoords(canvas).right - 40 > getCoords(faller).left && getCoords(canvas).top + 40 < getCoords(faller).bottom && getCoords(canvas).bottom > getCoords(faller).top) {
       charDie()
     }}
 }
@@ -367,7 +367,7 @@ function charDie() {
   }
   
   if (canvas.offsetTop < document.body.scrollHeight - (canvas.height-20)) {
-    canvas.style.top = canvas.offsetTop + 5 + 'px'
+    canvas.style.top = canvas.offsetTop + 3 + 'px'
     climber.drawFallingDown()
   }
   if (canvas.offsetTop >= document.body.scrollHeight - (canvas.height-20) && canvas.offsetTop <= document.body.scrollHeight - (canvas.height-26)) {
