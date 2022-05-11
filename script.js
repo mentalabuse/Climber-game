@@ -15,6 +15,7 @@ let onrope = false
 let gameOver = false
 let winGame = false
 let clickblocker = false
+let skyfall = false
 let rope = document.createElement('div')
 let ropeDet = document.createElement('div')
 let finish = document.querySelector('.finish')
@@ -211,7 +212,7 @@ function playGame() {
     if (!winGame) {
     checkWin()}
   }
-  else if (block == blocks[4] && canvas.offsetTop < blocks[4].offsetTop - 10 && canvas.getBoundingClientRect().right > block.getBoundingClientRect().right - block.offsetWidth/2 + 80) {
+  else if (block == blocks[4] && canvas.offsetTop < blocks[4].offsetTop - 10 && canvas.getBoundingClientRect().right > block.getBoundingClientRect().right - block.offsetWidth/2 + 80 && !gameOver) {
     faller.classList.add('fallingStar')
     ctx.clearRect(0,0,canvas.width,canvas.height)
     climber.drawBlinking()
@@ -350,6 +351,7 @@ function switchblock() {
     if (block == blocks[4] && !onrope) {
     if (getCoords(canvas).right-canvas.offsetWidth/2 < getCoords(faller).right && getCoords(canvas).right - 40 > getCoords(faller).left && getCoords(canvas).top + 40 < getCoords(faller).bottom && getCoords(canvas).bottom > getCoords(faller).top) {
       charDie()
+      skyfall = true
     }}
 }
 
@@ -369,6 +371,11 @@ function charDie() {
   if (canvas.offsetTop < document.body.scrollHeight - (canvas.height-20)) {
     canvas.style.top = canvas.offsetTop + 3 + 'px'
     climber.drawFallingDown()
+    if (skyfall) {
+      faller.style.top = faller.offsetTop + 'px'
+      faller.classList.remove('fallingStar')
+      faller.style.top = canvas.offsetTop + 3 + 'px'
+    }
   }
   if (canvas.offsetTop >= document.body.scrollHeight - (canvas.height-20) && canvas.offsetTop <= document.body.scrollHeight - (canvas.height-26)) {
     climber.drawDying()
@@ -536,8 +543,10 @@ startbutton.addEventListener('click', () => {
   }
   gameOver = false
   winGame = false
+  skyfall = false
   canvas.style.left = '0px'
   canvas.style.top = '970px'
+  faller.style.top = '140px'
   overlay.style.animation = 'hideover 2s forwards'
   mountain.style.animation = 'showover 2s forwards'
   canvas.style.animation = 'showover 2s forwards'
